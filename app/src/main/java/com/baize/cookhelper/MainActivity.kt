@@ -14,8 +14,8 @@ class MainActivity : AppCompatActivity() {
     navigatorBar = findViewById(R.id.navigator_bar)
     navigatorBar.initTabs(
       arrayListOf(
-        MainTabItem("首页", Color.RED, Color.GRAY, R.drawable.tab_home_s, R.drawable.tab_home),
-        MainTabItem("发现", Color.RED, Color.GRAY, R.drawable.tab_discover_s, R.drawable.tab_discover)
+        MainTabItem(0,"首页", Color.RED, Color.GRAY, R.drawable.tab_home_s, R.drawable.tab_home),
+        MainTabItem(1,"发现", Color.RED, Color.GRAY, R.drawable.tab_discover_s, R.drawable.tab_discover)
       )
     )
   }
