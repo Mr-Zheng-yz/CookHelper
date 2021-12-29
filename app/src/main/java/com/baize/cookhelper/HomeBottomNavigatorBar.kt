@@ -121,10 +121,10 @@ class MainTabItemView @JvmOverloads constructor(
     ): StateListDrawable {
         val imageStateDrawable = StateListDrawable()
         imageStateDrawable.addState(
-            intArrayOf(-android.R.attr.state_selected), context.getDrawable(selectImgResId)
+            intArrayOf(android.R.attr.state_selected), context.getDrawable(selectImgResId)
         )
         imageStateDrawable.addState(
-            intArrayOf(android.R.attr.state_selected), context.getDrawable(unSelectImgId)
+            intArrayOf(-android.R.attr.state_selected), context.getDrawable(unSelectImgId)
         )
         return imageStateDrawable
     }
