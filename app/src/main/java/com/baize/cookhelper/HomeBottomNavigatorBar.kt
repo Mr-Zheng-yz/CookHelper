@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.StateListDrawable
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -13,6 +14,11 @@ import android.widget.TextView
 
 /**
  * 自定义首页底部导航栏
+ * 1.支持菜单条目灵活配置
+ * 2.支持多种回调，适用各种情景
+ * TODO 3.支持网络图标
+ * TODO 4.支持切换动画
+ * TODO 5.支持提示红点
  */
 class HomeBottomNavigatorBar @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
@@ -21,30 +27,24 @@ class HomeBottomNavigatorBar @JvmOverloads constructor(
     private lateinit var tabItemList: List<MainTabItem>
     private var currentSelectIndex: Int = -1
     var tabClickListener: TabClickListener? = null
-    private val clickListener: OnClickListener by lazy {
-        OnClickListener { tabView ->
-
-        }
-    }
 
     init {
         orientation = LinearLayout.HORIZONTAL
+        gravity = Gravity.CENTER_VERTICAL
     }
 
-    fun initTabs(tabs: List<MainTabItem>, default: Int = 0) {
+    fun initTabs(tabs: List<MainTabItem>, default: Int = 0, tabClickListener: TabClickListener) {
+        this.tabClickListener = tabClickListener
         this.currentSelectIndex = if (default in tabs.indices) default else -1
         this.tabItemList = tabs
         for (i in tabs.indices) {
             val tabView = MainTabItemView(context).apply {
                 initItemTab(tabs[i], default == i)
+                setOnClickListener(this@HomeBottomNavigatorBar::onClick)
+                if (default == i) tabClickListener.onTabSelect(tabs[i])
             }
-            tabView.setOnClickListener(this)
             addView(tabView, LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1f))
         }
-    }
-
-    fun setTabListener(tabClickListener: TabClickListener) {
-        this.tabClickListener = tabClickListener
     }
 
     override fun onClick(tabView: View) {
@@ -155,7 +155,7 @@ data class MainTabItem(
     var selectImgResId: Int,
     var unSelectImgResId: Int
 ) {
-    //支持网络图片
+    //TODO 支持网络图片
     var selectImgUrl: String? = null
     var unSelectImgUrl: String? = null
 }
