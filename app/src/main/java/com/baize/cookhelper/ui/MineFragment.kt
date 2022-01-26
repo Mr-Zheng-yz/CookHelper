@@ -1,42 +1,37 @@
 package com.baize.cookhelper.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import androidx.preference.PreferenceFragmentCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.baize.cookhelper.R
 import com.baize.cookhelper.base.BaseFragment
 import com.baize.cookhelper.test.ListAdapter
 import com.baize.cookhelper.test.getRandomImageUrl
+import com.baize.cookhelper.ui.setting.SettingsActivity
 
-class HomeFragment : BaseFragment() {
+class MineFragment : BaseFragment() {
   companion object {
-    fun getInstance(text: String = "测试") = HomeFragment().apply {
+    fun getInstance(text: String = "测试") = MineFragment().apply {
       val bundle = Bundle()
       bundle.putString("text", text)
       arguments = bundle
     }
   }
 
-  private lateinit var rvTest: RecyclerView
-  private lateinit var mAdapter: ListAdapter
-
-  override fun getLayoutResId() = R.layout.fragment_home
+  override fun getLayoutResId() = R.layout.fragment_mine
 
   override fun initView(containerView: View) {
-    rvTest = containerView.findViewById(R.id.rv_test)
-    mAdapter = ListAdapter()
-    rvTest.apply {
-      layoutManager = GridLayoutManager(context, 2)
-      adapter = mAdapter
+    containerView.findViewById<Button>(R.id.btn_setting).setOnClickListener {
+      context?.startActivity(Intent(context, SettingsActivity::class.java))
     }
   }
 
   override fun loadData() {
-    repeat(20) {
-      mAdapter.addData(getRandomImageUrl() to "哈哈${it}")
-    }
-    mAdapter.notifyDataSetChanged()
+    super.loadData()
   }
 
 }

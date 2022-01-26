@@ -1,4 +1,4 @@
-package com.baize.cookhelper
+package com.baize.cookhelper.weight
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -11,6 +11,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.baize.cookhelper.R
 
 /**
  * 自定义首页底部导航栏

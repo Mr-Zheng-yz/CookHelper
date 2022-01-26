@@ -13,7 +13,7 @@
     android:layout_height="0dp"
     android:layout_weight="1" />
 
-  <com.baize.cookhelper.HomeBottomNavigatorBar
+  <com.baize.cookhelper.weight.HomeBottomNavigatorBar
     android:id="@+id/navigator_bar"
     android:layout_width="match_parent"
     android:layout_height="50dp"/>
