@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.baize.cookhelper.test.TestFragment
 import com.baize.cookhelper.ui.HomeFragment
 import com.baize.cookhelper.ui.MineFragment
+import com.baize.cookhelper.utils.getResColor
 import com.baize.cookhelper.utils.isDarkTheme
 import com.baize.cookhelper.vm.ViewModelFactory
 import com.baize.cookhelper.weight.HomeBottomNavigatorBar
@@ -31,9 +32,9 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.activity_main)
     navigatorBar = findViewById(R.id.navigator_bar)
     navigatorBar.initTabs(arrayListOf(
-      MainTabItem(0, "首页", Color.BLACK, Color.GRAY, R.drawable.tab_home_s, R.drawable.tab_home),
-      MainTabItem(1, "发现", Color.BLACK, Color.GRAY, R.drawable.tab_discover_s, R.drawable.tab_discover),
-      MainTabItem(2, "消息", Color.BLACK, Color.GRAY, R.drawable.tab_mine_s, R.drawable.tab_mine)
+      MainTabItem(0, "首页", getResColor(R.color.text_color), getResColor(R.color.color_888888), R.drawable.tab_home_s, R.drawable.tab_home),
+      MainTabItem(1, "发现", getResColor(R.color.text_color), getResColor(R.color.color_888888), R.drawable.tab_discover_s, R.drawable.tab_discover),
+      MainTabItem(2, "消息", getResColor(R.color.text_color), getResColor(R.color.color_888888), R.drawable.tab_mine_s, R.drawable.tab_mine)
     ), 0, object : TabClickListener {
       override fun onTabSelect(tab: MainTabItem) {
         Log.i("baize_", "onTabSelect: ${tab.id}")
