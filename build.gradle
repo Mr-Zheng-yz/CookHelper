@@ -4,6 +4,16 @@ buildscript {
     repositories {
         google()
         jcenter()
+        mavenCentral()
+
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+
+        maven { url 'https://developer.huawei.com/repo/'}     // 华为 maven 仓库地址
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.2"
@@ -18,6 +28,15 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
+
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://developer.huawei.com/repo/'}
     }
 }
 

@@ -7,3 +7,12 @@ package com.baize.cookhelper
  */
 //微信App Key
 const val WE_CHAT_KEY = ""
+
+class Constants {
+  companion object{
+    const val Wan_Android_URL = "https://www.wanandroid.com/"
+
+
+
+  }
+}

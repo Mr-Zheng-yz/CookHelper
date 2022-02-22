@@ -1,6 +1,5 @@
 package com.baize.cookhelper
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +8,6 @@ import com.baize.cookhelper.test.TestFragment
 import com.baize.cookhelper.ui.HomeFragment
 import com.baize.cookhelper.ui.MineFragment
 import com.baize.cookhelper.utils.getResColor
-import com.baize.cookhelper.utils.isDarkTheme
 import com.baize.cookhelper.vm.ViewModelFactory
 import com.baize.cookhelper.weight.HomeBottomNavigatorBar
 import com.baize.cookhelper.weight.MainTabItem
@@ -81,7 +79,7 @@ class MainActivity : AppCompatActivity() {
 
   override fun onBackPressed() {
     super.onBackPressed()
-    exitProcess(0)
+//    exitProcess(0)
   }
 
 }

@@ -1,7 +1,5 @@
 package com.baize.cookhelper.test
 
-import kotlin.random.Random
-
 /**
  *  author : baize
  *  date : 2022/1/26 3:44 下午

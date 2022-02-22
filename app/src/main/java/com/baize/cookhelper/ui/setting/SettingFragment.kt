@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import com.baize.cookhelper.R
 import com.baize.cookhelper.base.BaseFragment
+import com.baize.cookhelper.databinding.FragmentSettingBinding
 import com.baize.cookhelper.utils.DARK_MODEL_CONFIG_KEY
 import com.baize.cookhelper.utils.SPUtils
 import com.baize.cookhelper.utils.isDarkTheme
@@ -18,7 +19,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial
  *  date : 2022/1/26 4:13 下午
  *  description :
  */
-class SettingFragment : BaseFragment() {
+class SettingFragment : BaseFragment<FragmentSettingBinding>() {
 
   lateinit var switchDark: SwitchCompat
   lateinit var switchDarkFollowSystem: SwitchMaterial
@@ -26,7 +27,7 @@ class SettingFragment : BaseFragment() {
   private val darkSwitchChangeListener : CompoundButton.OnCheckedChangeListener by lazy {
     CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
       when (buttonView) {
-        switchDark -> {
+        binding.switchDark -> {
           Log.i("baize_dark","设置为：${if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO}")
           SPUtils.putInt(DARK_MODEL_CONFIG_KEY, if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)
           AppCompatDelegate.setDefaultNightMode(if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)
@@ -34,7 +35,7 @@ class SettingFragment : BaseFragment() {
 //          switchDarkFollowSystem.isChecked = false
 //          switchDarkFollowSystem.setOnCheckedChangeListener(darkSwitchChangeListener)
         }
-        switchDarkFollowSystem -> {
+        binding.switchDarkFollowSystem -> {
           if (isChecked) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
               Log.i("baize_dark","MODE_NIGHT_FOLLOW_SYSTEM:跟随系统")
@@ -57,23 +58,19 @@ class SettingFragment : BaseFragment() {
     }
   }
 
-  override fun getLayoutResId() = R.layout.fragment_setting
-
   override fun initView(containerView: View) {
     Log.i("baize_dark", "当前状态：${AppCompatDelegate.getDefaultNightMode()}")
-    switchDark = containerView.findViewById(R.id.switch_dark)
-    switchDark.isChecked = isDarkTheme(requireContext())
-    switchDark.setOnCheckedChangeListener(darkSwitchChangeListener)
-    switchDarkFollowSystem = containerView.findViewById(R.id.switch_dark_follow_system)
+    binding.switchDark.isChecked = isDarkTheme(requireContext())
+    binding.switchDark.setOnCheckedChangeListener(darkSwitchChangeListener)
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-      switchDarkFollowSystem.text = "跟随系统"
-      switchDarkFollowSystem.isChecked = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM ||
+      binding.switchDarkFollowSystem.text = "跟随系统"
+      binding.switchDarkFollowSystem.isChecked = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM ||
           AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_UNSPECIFIED
     } else {
-      switchDarkFollowSystem.text = "由省电模式设置"
-      switchDarkFollowSystem.isChecked = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
+      binding.switchDarkFollowSystem.text = "由省电模式设置"
+      binding.switchDarkFollowSystem.isChecked = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
     }
-    switchDarkFollowSystem.setOnCheckedChangeListener(darkSwitchChangeListener)
+    binding.switchDarkFollowSystem.setOnCheckedChangeListener(darkSwitchChangeListener)
   }
 
 }
