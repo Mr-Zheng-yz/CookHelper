@@ -1,15 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
+  android:layout_height="match_parent">
 
   <Button
     android:id="@+id/btn_setting"
-    android:text="设置"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:text="设置"
+    android:visibility="visible"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <Button
+    android:id="@+id/btn_testWeb"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="webview"
+    android:visibility="visible"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/btn_setting" />
+
+  <com.baize.cookhelper.weight.CircleGroupBg
+    android:id="@+id/circle_bg"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:text="哈哈哈" />
+
+  </com.baize.cookhelper.weight.CircleGroupBg>
+
+  <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"/>
+    android:background="#F5F6F6">
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="38dp"
+      android:layout_gravity="center_vertical"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:background="@drawable/bg_wheel_select" />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_test"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+
+  </FrameLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <com.google.android.material.tabs.TabLayout
+      android:id="@+id/tablayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+
+    <androidx.viewpager.widget.ViewPager
+      android:id="@+id/viewpager"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1" />
+
+  </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

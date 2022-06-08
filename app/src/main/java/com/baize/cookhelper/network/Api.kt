@@ -29,10 +29,12 @@ object Api {
     val retrofit = Retrofit.Builder()
       .baseUrl(Constants.Wan_Android_URL)
       .addConverterFactory(GsonConverterFactory.create())
-      .client(OkHttpClient.Builder().build())
+      .client(buildOkHttp())
       .build()
     retrofit.create(WanService::class.java)
   }
+
+  private fun buildOkHttp() = OkHttpClient.Builder().build()
 
   fun getWanAndroidApi() = wanApi
 

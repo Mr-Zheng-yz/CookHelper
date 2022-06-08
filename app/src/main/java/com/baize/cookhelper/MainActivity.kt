@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.baize.cookhelper.test.TestFragment
 import com.baize.cookhelper.ui.HomeFragment
 import com.baize.cookhelper.ui.MineFragment
+import com.baize.cookhelper.utils.PreferencesDelegate
 import com.baize.cookhelper.utils.getResColor
 import com.baize.cookhelper.vm.ViewModelFactory
 import com.baize.cookhelper.weight.HomeBottomNavigatorBar
@@ -24,6 +25,8 @@ class MainActivity : AppCompatActivity() {
   private val mMainViewModel by lazy {
     ViewModelFactory.getMainViewModel(this)
   }
+
+  private val isFirst : Boolean by PreferencesDelegate("isFirst", false)
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
